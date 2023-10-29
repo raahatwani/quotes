@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, avoid_print
+
 import 'package:http/http.dart' as http;
 
 import 'dart:convert';
@@ -23,7 +25,17 @@ getTwo() async {
   dataTwo = jsonDecode(apiRespTwo.body);
 }
 
+// getThree() async {
+//   apiRespThree = await http.get(Uri.parse(urlThree));
+//   // dataThree = jsonDecode(apiRespThree.body);
+//    urlThree = apiRespThree.body;
+// }
 getThree() async {
-  apiRespThree = await http.get(Uri.parse(urlThree));
-  dataThree = jsonDecode(apiRespThree.body);
+  try {
+    apiRespThree = await http.get(Uri.parse(urlThree));
+    // dataThree = jsonDecode(apiRespThree.body);
+    urlThree = apiRespThree.body;
+  } catch (e) {
+    print("Error: $e");
+  }
 }

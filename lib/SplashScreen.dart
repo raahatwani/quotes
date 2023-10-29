@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, file_names
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -20,6 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
@@ -32,6 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Icon(
           Icons.format_quote_sharp,
           size: 200.0,
+          color: Colors.white70,
         ),
       ),
     ));

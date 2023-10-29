@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last, prefer_const_constructors, use_build_context_synchronously, use_key_in_widget_constructors, file_names
+
 import 'package:flutter/material.dart';
 
 import '../MainApp.dart';
