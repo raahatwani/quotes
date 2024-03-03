@@ -9,61 +9,78 @@ import '../pages.dart';
 class MainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Drawer(
+    return Drawer(width: MediaQuery.of(context).size.width*0.6,
       backgroundColor: Colors.white,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          DrawerHeader(
-            child: Icon(
-              Icons.format_quote_sharp,
-              size: screen.width * 0.1,
-              color: Colors.white,
+          Container(height: MediaQuery.of(context).size.height*0.15,
+            child: DrawerHeader( 
+              child: Icon(
+                Icons.format_quote_sharp,
+                size: screen.width * 0.1,
+                color: Colors.black,
+              ),
+              decoration: BoxDecoration(color: Colors.blue),
             ),
-            decoration: BoxDecoration(color: Colors.blue),
           ),
-          Padding(padding: EdgeInsets.only(bottom: 200)),
-          ListTile(
-            onTap: () async {
+          CustomTile(icon:  Icons.timer, onTap: () async {
               await getOne();
               Navigator.push(context, MaterialPageRoute(builder: (_) {
                 return PageOne();
               }));
-            },
-            tileColor: Colors.blue,
-            leading: Icon(
-              Icons.timer,
-              size: screen.width * 0.05,
-              color: Colors.white,
-            ),
-            title: Text(
-              'QUOTE OF THE DAY',
-              textScaleFactor: screen.width * 0.0015,
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          Padding(padding: EdgeInsets.only(bottom: 200)),
-          ListTile(
-            onTap: () async {
+            }, text: 'Quote of the Day'),
+         CustomTile(icon: Icons.timeline_rounded, onTap: () async {
               await getTwo();
               Navigator.push(context, MaterialPageRoute(builder: (_) {
                 return PageTwo();
               }));
-            },
-            tileColor: Colors.blue,
-            leading: Icon(
-              Icons.timeline_rounded,
-              size: screen.width * 0.05,
-              color: Colors.white,
-            ),
-            title: Text(
-              'RANDOM QUOTE',
-              textScaleFactor: screen.width * 0.0015,
-              style: TextStyle(color: Colors.white),
-            ),
-          )
+            }, text: 'Random Quote'),
+            CustomTile(icon: Icons.image, onTap: () async {
+              await getThree();
+              Navigator.push(context, MaterialPageRoute(builder: (_) {
+                return PageThree();
+              }));
+            }, text: 'Image Quote'),
+            CustomTile(icon: Icons.note, onTap: 
+            () async {
+              await getTwo();
+              Navigator.push(context, MaterialPageRoute(builder: (_) {
+                return PageFour();
+              }
+              ));
+            }, text: 'Your Quotes'),
         ],
       ),
     );
+  }
+}
+
+
+class CustomTile extends StatelessWidget {
+  final VoidCallback onTap;
+  String text;
+  IconData icon;
+ CustomTile({
+    required this.icon,
+    required this.onTap,
+    required this.text
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+            onTap:onTap,
+            leading: Icon(
+              icon,
+              size: screen.width * 0.05,
+              color: Colors.black,
+            ),
+            title: Text(
+              text,
+              textScaleFactor: screen.width * 0.0020,
+              style: TextStyle(color: Colors.black),
+            ),
+          );
   }
 }
